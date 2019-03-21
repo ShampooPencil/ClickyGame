@@ -1,5 +1,5 @@
 import React from "react";
-// import countingClicks from "./countingComp";
+import countingClicks from "./countingComp";
 //import StoreChars from "./storeChars";
 
 //well, this is the logic. We will use the onClick to use the react. 
@@ -16,6 +16,7 @@ function OnClickHandler(props) {
 
             <img src={props.src} alt="Pic" />
             <h2>{props.id}</h2>
+           
         </div>
     )
 }

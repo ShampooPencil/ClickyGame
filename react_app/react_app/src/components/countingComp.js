@@ -1,22 +1,24 @@
-// import React from 'react';
+import React from 'react';
 
-// function countingClicks(props){
-//     props.state = {
-//         count: 0
-//     };
+function CountingClicks(props){
+    props.state = {
+        count: 0
+    };
     
-//     handleClick = () => {
-//         this.setState(({ count }) => ({
-//             count: count + 1
-//         }));
-//         this.shuffle();
-//         console.log(this.state.count);
-//     };
+    props.handleClick = () => {
+        this.setState(({ count }) => ({
+            count: count + 1
+        }));
+        this.shuffle();
+        console.log(this.state.count);
+    };
   
-//     return (
+    return (
+        <div>
+            {props.handleClick()}
+        </div>
         
-   
-//         )
-//     }
+        )
+    }
 
-// export default countingClicks;
+export default CountingClicks;

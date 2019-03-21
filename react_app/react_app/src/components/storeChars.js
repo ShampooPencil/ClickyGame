@@ -11,44 +11,93 @@ import OnClickHandler from './clickedImage'; //****** we will use this soon just
 export class Store extends React.Component {
     constructor(props) {
         super(props);
-
         // since you're using this method in a callback, don't forget to
         // bind the this context
         this.clickChar = this.clickChar.bind(this);
     }
     //we are going to pass the id inside the function
-    clickChar(id) {
+    clickChar(id, props) {
 
         console.log(id);
+        console.log(this.state.selectedChar);
+        if (id === this.state.selectedChar[id]) {
+            console.log(this.state.selectedChar[id]);
+            // eslint-disable-next-line no-restricted-globals
+            return location.reload();
+            // eslint-disable-next-line no-restricted-globals
+            //
+        
+        } else if(this.state.selectedChar.length() === 6) {
+            return <Store />;
+                
+        } else {
+            return this.state.selectedChar.push(id);
+        }
+        //console.log(clickChar());
 
 
     }
 
+    
     state = {
         count: 0,
+        value: '',
         selectedChar: []
     };
 
-    handleClick = id => {
-        const filter = this.state.selectedChar.filter(character => character.id === id);
+    // onChangeValue = event => {
+    //     this.setState({ value: event.target.value });
+    // };
 
-        this.setState(({ count }) => ({
-            count: count + 1
-        }));
+    // onAddItem = () => {
+    //     // not allowed AND not working
+    //     this.setState(state => {
+    //         const selectedChar = state.list.concat(state.value);
+    //         console.log(selectedChar);
+    //         return {
+    //             selectedChar,
+    //             value: '',
+    //         };
+    //     });
+    // };
+
+    // handleClick = (character) => {
+
+    //     // eslint-disable-next-line no-restricted-globals
+    //     // const filterChars = this.state.selectedChar.filter(character => {
+    //         if (character === this.state.selectedChar[character]) {
+    //             console.log(this.state.selectedChar[character]);
+    //             // eslint-disable-next-line no-restricted-globals
+    //             return alert("GAMEOVER") && location.reload();
+    //             // eslint-disable-next-line no-restricted-globals
+    //             //
+    //         } else {
+    //             return this.state.selectedChar.push(character);
+    //         }
+            
+        // };
+        /* // (character[id] === this.state.selectedChar[id]) ? alert("GAMEOVER", location.reload()) : this.state.selectedChar.push(character[id]) );}*/
+        // this.setState(({ count }) => ({
+        //     count: count + 1
+        // }));
         // this.shuffle();
-        console.log(this.state.count);
-    };
-    shuffle() {
+        
+        // console.log(this.state.count);
+    
+   
+    // shuffle() {
 
-        //  let characters = Math.floor(Math.random() * this.props.charArr.length);
-        //  console.log(this.charArr.length) ;               
-    }
+    //     //  let characters = Math.floor(Math.random() * this.props.charArr.length);
+    //     //  console.log(this.charArr.length) ;               
+    // }
 
 
 
     render() {
-
-
+      
+    
+    
+        
         let charArr = ["Dennis", "Charlie", "Mac", "Dee", "Charlies-Uncle", "Frank", "McPoyles", "Cricket"];
         let linkToPic = [
             "http://1.bp.blogspot.com/-uQ16l5LzkHY/Vq-Uk-8xN1I/AAAAAAAAAbQ/CII-xso3_YQ/s1600/maxresdefault.jpg", //Dennis
@@ -60,29 +109,31 @@ export class Store extends React.Component {
             "http://farm3.static.flickr.com/2351/1992927137_5243b955ef.jpg", //McPoyles
             "http://i.imgur.com/lRhgBqv.png" //cricket
         ];
-        //    if(this.state.count)
+        
         return (
 
             <div className="container">
 
 
-                {/* <div onClick={this.handleClick} counter={this.state.count} clickcount={(this.state.count < 2) ? alert("Nice!") : alert("GAME OVER")} > */}
-                <OnClickHandler id={charArr[0]} clickChar={this.clickChar} src={linkToPic[0]} />
-                {/* </div> */}
-                <OnClickHandler id={charArr[1]} clickChar={this.clickChar} src={linkToPic[1]} />
+                <div onClick={this.handleClick} counter={this.state.count}> {/*clickcount={this.filter*/} {/*(this.state.count < 2) {? alert("Nice!") : alert("GAME OVER")*/}
 
-                <OnClickHandler id={charArr[2]} clickChar={this.clickChar} src={linkToPic[2]} />
+                    <OnClickHandler id={charArr[0]} clickChar={this.clickChar} src={linkToPic[0]} />
 
-                <OnClickHandler id={charArr[3]} clickChar={this.clickChar} src={linkToPic[3]} />
+                    <OnClickHandler id={charArr[1]} clickChar={this.clickChar} src={linkToPic[1]} />
 
-                <OnClickHandler id={charArr[4]} clickChar={this.clickChar} src={linkToPic[4]} />
+                    <OnClickHandler id={charArr[2]} clickChar={this.clickChar} src={linkToPic[2]} />
 
-                <OnClickHandler id={charArr[5]} clickChar={this.clickChar} src={linkToPic[5]} />
+                    <OnClickHandler id={charArr[3]} clickChar={this.clickChar} src={linkToPic[3]} />
 
-                <OnClickHandler id={charArr[6]} clickChar={this.clickChar} src={linkToPic[6]} />
+                    <OnClickHandler id={charArr[4]} clickChar={this.clickChar} src={linkToPic[4]} />
 
-                <OnClickHandler id={charArr[7]} clickChar={this.clickChar} src={linkToPic[7]} />
+                    <OnClickHandler id={charArr[5]} clickChar={this.clickChar} src={linkToPic[5]} />
 
+                    <OnClickHandler id={charArr[6]} clickChar={this.clickChar} src={linkToPic[6]} />
+
+                    <OnClickHandler id={charArr[7]} clickChar={this.clickChar} src={linkToPic[7]} />
+
+                </div>
             </div>
         )
     }
