@@ -8,12 +8,20 @@
 import React from 'react';
 import OnClickHandler from './clickedImage'; //****** we will use this soon just puutting the pics up for now
 
+import ReactDOM from 'react-dom';
+
+
 export class Store extends React.Component {
     constructor(props) {
         super(props);
         // since you're using this method in a callback, don't forget to
         // bind the this context
         this.clickChar = this.clickChar.bind(this);
+        this.state = {
+            count: 0,
+            value: '',
+            selectedChar: []
+        };
     }
     //we are going to pass the id inside the function
     clickChar(id, props) {
@@ -21,24 +29,35 @@ export class Store extends React.Component {
         console.log(id);
         console.log(this.state.selectedChar);
         if (id === this.state.selectedChar[id]) {
-            console.log(this.state.selectedChar[id]);
+            // for (var i = 0; i < this.state.selectedChar.length; i++) {
+            //     if (this.state.selectedChar[i] === this.state.selectedChar) {
+            //         return <Store />;
+            //     }
+                console.log(this.state.selectedChar[id]);
+        
+            //console.log(this.state.selectedChar[id]);
             // eslint-disable-next-line no-restricted-globals
-            return location.reload();
+            //return location.reload();
             // eslint-disable-next-line no-restricted-globals
             //
-        
-        } else if(this.state.selectedChar.length() === 6) {
-            return <Store />;
-                
+
+        } else if (this.state.selectedChar.length === 6) {
+            this.setState({
+                selectedChar: []
+            })
+
         } else {
-            return this.state.selectedChar.push(id);
+            this.setState({
+                selectedChar: [...this.state.selectedChar, id]
+                                //[1, 2, 3, 5, 20, id]
+            })
         }
         //console.log(clickChar());
 
 
     }
 
-    
+
     state = {
         count: 0,
         value: '',
@@ -74,17 +93,17 @@ export class Store extends React.Component {
     //         } else {
     //             return this.state.selectedChar.push(character);
     //         }
-            
-        // };
-        /* // (character[id] === this.state.selectedChar[id]) ? alert("GAMEOVER", location.reload()) : this.state.selectedChar.push(character[id]) );}*/
-        // this.setState(({ count }) => ({
-        //     count: count + 1
-        // }));
-        // this.shuffle();
-        
-        // console.log(this.state.count);
-    
-   
+
+    // };
+    /* // (character[id] === this.state.selectedChar[id]) ? alert("GAMEOVER", location.reload()) : this.state.selectedChar.push(character[id]) );}*/
+    // this.setState(({ count }) => ({
+    //     count: count + 1
+    // }));
+    // this.shuffle();
+
+    // console.log(this.state.count);
+
+
     // shuffle() {
 
     //     //  let characters = Math.floor(Math.random() * this.props.charArr.length);
@@ -94,10 +113,10 @@ export class Store extends React.Component {
 
 
     render() {
-      
-    
-    
-        
+
+
+
+
         let charArr = ["Dennis", "Charlie", "Mac", "Dee", "Charlies-Uncle", "Frank", "McPoyles", "Cricket"];
         let linkToPic = [
             "http://1.bp.blogspot.com/-uQ16l5LzkHY/Vq-Uk-8xN1I/AAAAAAAAAbQ/CII-xso3_YQ/s1600/maxresdefault.jpg", //Dennis
@@ -109,7 +128,7 @@ export class Store extends React.Component {
             "http://farm3.static.flickr.com/2351/1992927137_5243b955ef.jpg", //McPoyles
             "http://i.imgur.com/lRhgBqv.png" //cricket
         ];
-        
+
         return (
 
             <div className="container">

@@ -12,7 +12,7 @@ function OnClickHandler(props) {
 
     return (
 
-        <div id={props.id} onClick={() => props.clickChar([props.id])}>
+        <div id={props.id} onClick={() => props.clickChar(props.id)}>
 
             <img src={props.src} alt="Pic" />
             <h2>{props.id}</h2>
