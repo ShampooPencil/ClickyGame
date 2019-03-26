@@ -8,7 +8,7 @@
 import React from 'react';
 import OnClickHandler from './clickedImage'; //****** we will use this soon just puutting the pics up for now
 
-import ReactDOM from 'react-dom';
+//import ReactDOM from 'react-dom';
 
 
 export class Store extends React.Component {
@@ -20,49 +20,119 @@ export class Store extends React.Component {
         this.state = {
             count: 0,
             value: '',
-            selectedChar: []
+            selectedChar: [],
+            alreadyThere: ["Dennis", "Charlie", "Mac", "Dee", "Charlies-Uncle", "Frank", "McPoyles", "Cricket"],
+            youWon: "You Win",
+            youLose: ""
+
         };
     }
+
     //we are going to pass the id inside the function
-    clickChar(id, props) {
+    clickChar(id) {
 
-        console.log(id);
-        console.log(this.state.selectedChar);
-        if (id === this.state.selectedChar[id]) {
-            // for (var i = 0; i < this.state.selectedChar.length; i++) {
-            //     if (this.state.selectedChar[i] === this.state.selectedChar) {
-            //         return <Store />;
-            //     }
-                console.log(this.state.selectedChar[id]);
+        // console.log(id);
+        // console.log(this.state.selectedChar);
+        // console.log(this.state.compareChar);
+      
+            // this.setState({
+            //     selectedChar: [...this.state.selectedChar, id]
+            //     //compareChar: [...this.state.compareChar, id]
+            // });
         
-            //console.log(this.state.selectedChar[id]);
-            // eslint-disable-next-line no-restricted-globals
-            //return location.reload();
-            // eslint-disable-next-line no-restricted-globals
-            //
+        // for (var i = 0; i < this.state.alreadyThere.length; i++) {
+        //     //console.log(this.state.selectedChar);
+        //     for (var j = 0; j < this.state.selectedChar.length; j++) {
+        //         console.log(this.state.selectedChar[j]);
+        //         console.log(this.state.selectedChar);
+        //         if(this.state.selectedChar.length === 6) {
+        //             console.log(this.state.youWon);
+        //             this.setState({
+        //                 selectedChar: []
+        //             })
+        //             console.log(this.state.selectedChar);
+        //             break;
+        //         }
+        //         if (this.state.selectedChar[i] === this.state.selectedChar[j]) {
+        //             console.log("GAMEOVER");
+        //             this.setState({
+        //                 selectedChar: [],
+        //                 youLose: "GAME OVER!"
+        //                 // compareChar: [...this.state.selectedChar, id],
+        //             })
+        //             console.log(this.state.selectedChar);
+        //             break;
+        //         }
+        //     }
+        //     if (this.state.selectedChar.length === 6) {
+        //         console.log(this.state.youWon);
+        //         this.setState({
+        //             selectedChar: []
+        //         })
+        //         console.log(this.state.selectedChar);
+    
+        //     } else {
 
-        } else if (this.state.selectedChar.length === 6) {
+        //         // this.setState({
+        //         //     selectedChar: [...this.state.selectedChar, id]
+        //         //     //compareChar: [...this.state.compareChar, id]
+        //         //});
+        //         console.log(id);
+        //         console.log(this.state.selectedChar);
+        //         console.log(this.state.selectedChar.length);
+        //         console.log(this.state.alreadyThere[i]);
+            
+        //     }
+        //     if (this.state.selectedChar.length === 6) {
+        //         console.log(this.state.youWon);
+        //         this.setState({
+        //             selectedChar: []
+        //         })
+        //         console.log(this.state.youWon);
+        //         console.log(this.state.selectedChar);
+        //     }
+
+
+        // };
+        if (this.state.selectedChar[id] === this.state.alreadyThere[id]) {
+            console.log("GAMEOVER");
+            console.log(this.state.selectedChar[id]);
+            this.setState({
+                selectedChar: [],
+                youLose: "GAME OVER!"
+                // compareChar: [...this.state.selectedChar, id],
+            })
+        }
+
+        if (this.state.selectedChar.length === 6) {
+            console.log(this.state.youWon);
             this.setState({
                 selectedChar: []
             })
-
+            console.log(this.state.youWon);
+            console.log(this.state.selectedChar);
         } else {
             this.setState({
                 selectedChar: [...this.state.selectedChar, id]
-                                //[1, 2, 3, 5, 20, id]
+                //compareChar: [...this.state.compareChar, id]
             })
+            console.log(id);
+            //console.log(this.state.selectedChar);
+            console.log(this.state.selectedChar.length);
         }
+        console.log(this.state.selectedChar);
         //console.log(clickChar());
 
-
+        console.log(this.state.compareChar);
     }
 
 
-    state = {
-        count: 0,
-        value: '',
-        selectedChar: []
-    };
+
+    // state = {
+    //     count: 0,
+    //     value: '',
+    //     selectedChar: []
+    // };
 
     // onChangeValue = event => {
     //     this.setState({ value: event.target.value });
