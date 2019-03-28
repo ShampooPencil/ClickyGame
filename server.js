@@ -11,7 +11,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "NYT-Google-Books-Search/creat-react-express/client/public/index.html"));
+    res.sendFile(path.join(__dirname, "/ClickyGame/react_app/react_app/public/index.html"));
   });
   
   app.listen(PORT, () => {
